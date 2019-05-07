@@ -1,22 +1,68 @@
-console.log("starting app.js");
-
-const fs = require('fs');
-const notes = require('./notes');
-const _ = require('lodash');
 const yargs = require('yargs');
 
-const argv = yargs.argv;
+// add, remove, read, list
 
-let command = argv._[0];
+// add command
+yargs.command({
+    command: 'add',
+    describe: 'Add a new note',
+    builder: {
+        title: {
+            describe: 'Note Title'
+        }
+    },
+    handler: function (argv) {
+        console.log("Adding a new note", argv)
+    }
+});
 
-if(command === 'add'){
-    notes.addNote(argv.title, argv.body);
-} else if (command === 'list'){
-    notes.getAll();
-} else if (command === 'read'){
-    notes.getNote(argv.title);
-} else if (command === 'remove'){
-    notes.removeNote(argv.title);
-} else {
-    console.log("command not recognised")
-}
+// remove command
+yargs.command({
+    command: 'remove',
+    describe: 'Remove a note',
+    handler: function() {
+        console.log("Removing the note");
+    }
+});
+
+// read command
+yargs.command({
+    command: 'read',
+    describe: 'reading a note',
+    handler: function() {
+        console.log("Reading the note");
+    }
+});
+
+// list command
+yargs.command({
+    command: 'list',
+    describe: 'Listing notes',
+    handler: function() {
+        console.log("Listing notes");
+    }
+});
+
+// console.log(yargs.argv);
+
+
+// const fs = require('fs');
+// const notes = require('./notes');
+// const _ = require('lodash');
+// const yargs = require('yargs');
+
+// const argv = yargs.argv;
+
+// let command = argv._[0];
+
+// if(command === 'add'){
+//     notes.addNote(argv.title, argv.body);
+// } else if (command === 'list'){
+//     notes.getAll();
+// } else if (command === 'read'){
+//     notes.getNote(argv.title);
+// } else if (command === 'remove'){
+//     notes.removeNote(argv.title);
+// } else {
+//     console.log("command not recognised")
+// }
