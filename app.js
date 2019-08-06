@@ -1,6 +1,11 @@
+const chalk = require("chalk");
 const yargs = require('yargs');
 
 // add, remove, read, list
+
+//yargs.argv is the process.argv that yargs has parsed
+
+yargs.version("1.1.0");
 
 // add command
 yargs.command({
