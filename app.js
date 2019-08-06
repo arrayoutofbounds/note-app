@@ -5,7 +5,7 @@ const yargs = require('yargs');
 
 //yargs.argv is the process.argv that yargs has parsed
 
-yargs.version("1.1.0");
+// yargs.version("1.1.0");
 
 // add command
 yargs.command({
@@ -48,7 +48,7 @@ yargs.command({
     }
 });
 
-// console.log(yargs.argv);
+console.log(yargs.argv);
 
 
 // const fs = require('fs');
