@@ -4,8 +4,7 @@ const yargs = require('yargs');
 // add, remove, read, list
 
 //yargs.argv is the process.argv that yargs has parsed
-
-// yargs.version("1.1.0");
+yargs.version("1.0.0");
 
 // add command
 yargs.command({
@@ -13,11 +12,19 @@ yargs.command({
     describe: 'Add a new note',
     builder: {
         title: {
-            describe: 'Note Title'
+            describe: 'Note Title',
+            demandOption: true,
+            type: 'string'
+        },
+        body: {
+            describe: 'Body for the note to be added',
+            demandOption: true,
+            type: 'string'
         }
     },
     handler: function (argv) {
-        console.log("Adding a new note", argv)
+        console.log("Title is ", argv.title);
+        console.log("Body is ", argv.body);
     }
 });
 
@@ -48,26 +55,4 @@ yargs.command({
     }
 });
 
-console.log(yargs.argv);
-
-
-// const fs = require('fs');
-// const notes = require('./notes');
-// const _ = require('lodash');
-// const yargs = require('yargs');
-
-// const argv = yargs.argv;
-
-// let command = argv._[0];
-
-// if(command === 'add'){
-//     notes.addNote(argv.title, argv.body);
-// } else if (command === 'list'){
-//     notes.getAll();
-// } else if (command === 'read'){
-//     notes.getNote(argv.title);
-// } else if (command === 'remove'){
-//     notes.removeNote(argv.title);
-// } else {
-//     console.log("command not recognised")
-// }
+yargs.parse();
