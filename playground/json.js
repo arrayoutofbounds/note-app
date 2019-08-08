@@ -1,6 +1,6 @@
-let obj = {
-    name: "anmol"
-}
+// let obj = {
+//     name: "anmol"
+// }
 
 // let stringObj = JSON.stringify(obj)
 
