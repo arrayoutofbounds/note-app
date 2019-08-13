@@ -10,9 +10,10 @@ const addNote = (title, body) => {
       title,
       body
     });
+    console.log(chalk.green.inverse("Added new note"));
     saveNotes(notes);
   } else {
-    console.log("cannot add a duplicate note");
+    console.log(chalk.red.inverse("Cannot add duplicate note"));
   }
 };
 
@@ -26,9 +27,7 @@ const getAll = () => {
 
 const removeNote = (title) => {
   const notes = loadNotes();
-  const notesToKeep = notes.filter(note => {
-    return note.title !== title;
-  });
+  const notesToKeep = notes.filter(note => note.title !== title);
 
   if(notes.length > notesToKeep.length){
     console.log(chalk.green.inverse("Note removed"));
