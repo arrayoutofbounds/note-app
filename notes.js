@@ -10,10 +10,10 @@ const addNote = (title, body) => {
       title,
       body
     });
-    console.log(chalk.green.inverse("Added new note"));
+    console.log(chalk.green.inverse('Added new note'));
     saveNotes(notes);
   } else {
-    console.log(chalk.red.inverse("Cannot add duplicate note"));
+    console.log(chalk.red.inverse('Cannot add duplicate note'));
   }
 };
 
@@ -21,25 +21,29 @@ const getNote = title => {
   console.log('getting note');
 };
 
-const getAll = () => {
-  console.log('get all notes');
+const listNotes = () => {
+  const notes = loadNotes();
+  console.log(chalk.inverse("Your notes"));
+  notes.forEach((note) => {
+    console.log(note.title);
+  });
 };
 
-const removeNote = (title) => {
+const removeNote = title => {
   const notes = loadNotes();
   const notesToKeep = notes.filter(note => note.title !== title);
 
-  if(notes.length > notesToKeep.length){
-    console.log(chalk.green.inverse("Note removed"));
+  if (notes.length > notesToKeep.length) {
+    console.log(chalk.green.inverse('Note removed'));
     saveNotes(notesToKeep);
-  }else{
-    console.log(chalk.red.inverse("No note found"));
+  } else {
+    console.log(chalk.red.inverse('No note found'));
   }
 };
 
-const saveNotes = (notes) => {
+const saveNotes = notes => {
   fs.writeFileSync('notes.json', JSON.stringify(notes));
-}
+};
 
 const loadNotes = () => {
   try {
@@ -51,7 +55,7 @@ const loadNotes = () => {
 
 module.exports = {
   addNote,
-  getAll,
+  listNotes,
   getNote,
   removeNote
 };
